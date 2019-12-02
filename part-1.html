@@ -164,8 +164,24 @@
 				<!-- END Section -->
 
 
-				<section>
+				<section >
 					<h2>3. Statut</h2>
+
+					<code class="hljs bash">git status</code>
+					État actuel du 'staging' (bleu) et du 'working directory' (vert)
+					<img src="images/git-status.png" />
+
+					<br />
+					<pre><code data-trim data-noescape class="hljs bash">
+							# Commits dans le 'Git repository'
+							git log
+
+							# Interface + sympa
+							tig
+
+							# Personnalisable à souhait
+							git log --name-status --graph --oneline --decorate --all --pretty=format:"%C(yellow)%h\\ %Cblue%ad%Cred%d\\ %C(cyan)%<(50,trunc)%s%Cblue\\ [%cn]" --date=short
+						</code></pre>
 				</section>
 				<!-- END Section -->
 

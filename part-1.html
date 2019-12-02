@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Formation GIT - 1°</title>
+    	<link rel="shortcut icon" href="images/favicon.ico" />
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<img src="images/git.png"/>
+					<p>
+						<small>par <a href="https://www.linkedin.com/in/benjamin-dieleman-a2330b95/">Benjamin DIELEMAN <br /></a></small>
+						<br />
+						<small>décembre 2019</small>
+						<br />
+						<a href="https://www.atgp.net">
+							<img src="images/logo-atgp.png" height="50px" >
+						</a>
+						&nbsp;&nbsp;
+						<a href="https://www.solluz.fr">
+							<img src="images/logo-solluz.png" height="50px" >
+						</a>
+						&nbsp;&nbsp;
+						<a href="https://github.com/benito103e/revealjs-formation-git-iut">
+							<img src="images/logo-github.png" height="50px" >
+						</a>
+					</p>
+				</section>
+				<!-- END Section -->
+
+
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2>Le versioning (Rapidement &#x1F3C3;)</h2>
+
+					<h5 class="fragment text-left">1. Historique des modifications (application, présentation)</h5>
+					<ul>
+						<li class="fragment">➔ Quoi / Qui / Quand / Pourquoi ?</li>
+						<li class="fragment">➔ Annuler</li>
+					</ul>
+
+
+					<h5 class="fragment text-left">2. Travail en équipe</h5>
+					<ul>
+						<li class="fragment">➔ Ne pas écraser le travail</li>
+						<li class="fragment">➔ Suivre l'historique</li>
+						<li class="fragment">➔ Partager</li>
+					</ul>
+				</section>
+				<!-- END Section -->
+
+
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2>Qu'est-ce que GIT ?</h2>
+					<ul>
+						<li class="fragment">Créé en 2005 par Linus Torvald</li>
+						<li class="fragment">Objectifs : palier aux défauts des autres outils</li>
+						<li class="fragment">➔ Performant (rapide et puissant)</li>
+						<li class="fragment">➔ Distribué (<b>≠</b> SVN)</li>
+						<li class="fragment">➔ Support travail non linéaire (branches)</li>
+					</ul>
+				</section>
+				<!-- END Section -->
+
+
+
+				<section data-background="#28498c" data-background-transition="zoom">
+					<h2>Pourquoi vous avez besoin de GIT dans votre vie ?</h2>
+
+					<h5 class="fragment text-left">1. Peu importe votre métier : vous allez le rencontrer</h5>
+					<ul>
+						<li class="fragment">➔ Développement / Scripting</li>
+						<li class="fragment">➔ Administration (Gitlab, serveurs prod...)</li>
+						<li class="fragment">➔ Déploiement</li>
+					</ul>
+					<br /><br />
+					<h5 class="fragment text-left">2. Utilisé partout &#127759;</h5>
+
+					<br />
+					<h5 class="fragment text-left">3. Amazing / Incredible</h5>
+					<ul>
+						<li class="fragment">➔ Commits locaux (tester, sauvegarder, tester...)</li>
+						<li class="fragment">➔ Une branche par fonctionnalité</li>
+						<li class="fragment">➔ Un historique clair et soigné &#128076;</li>
+					</ul>
+
+					<br /><br />
+					<h5 class="fragment" style="color:red;">Harder, Better, Faster, Stronger</h5>
+				</section>
+				<!-- END Section -->
+
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2>Objectifs de cette formation</h2>
+					<ul>
+						<li class="fragment">Présenter la philosophie de GIT</li>
+						<li class="fragment">Des clés pour commencer</li>
+						<li class="fragment">Initialiser les bonnes pratiques</li>
+					</ul>
+
+					<br /><br />
+					<h5 class="fragment" style="color:red;">Brace yourselves</h5>
+				</section>
+				<!-- END Section -->
+
+
+				<section data-background="#28498c" data-background-transition="zoom">
+					<h2>I. Un peu de théorie</h2>
+				</section>
+				<!-- END Section -->
+
+
+				<section data-transition="zoom">
+					<h2>1. Modèle distribué</h2>
+					<img src="images/distributed.png"/>
+
+					<h3>Fonctionnement avec un repo central (Gitlab)</h3>
+					<img src="images/distributed_central_repo.png"/>
+				</section>
+				<!-- END Section -->
+
+
+				<section>
+					<h2>2. Les zones de travail en local</h2>
+				</section>
+				<!-- END Section -->
+
+
+				<section>
+					<h2>3. Statut</h2>
+				</section>
+				<!-- END Section -->
+
+
+				<section>
+					<h2>4. Les commits</h2>
+				</section>
+				<!-- END Section -->
+
+
+				<section>
+					<h2>5. Les branches (en bref)</h2>
+				</section>
+				<!-- END Section -->
+
+
+
+				<section data-background="#28498c" data-background-transition="zoom">
+					<h2>II. En pratique</h2>
+				</section>
+				<!-- END Section -->
+
+
+
+				<section>
+					<h2>1. Configurer son profil git</h2>
+				</section>
+				<!-- END Section -->
+
+
+				<section>
+					<h2>2. Initialiser un dépôt</h2>
+				</section>
+				<!-- END Section -->
+
+
+				<section>
+					<h2>3. Premières modifications</h2>
+				</section>
+				<!-- END Section -->
+
+
+				<section>
+					<h2>4. Partager son travail</h2>
+				</section>
+				<!-- END Section -->
+
+
+
+				<section data-background="#28498c" data-background-transition="zoom">
+					<h2>Sources</h2>
+					<ul>
+						<li>Fortement inspiré par le blog : <a href="https://www.miximum.fr/">https://www.miximum.fr/</a></li>
+						<li>Tutoriel (en) de bonne qualité : <a href="https://www.atlassian.com/git">https://www.atlassian.com/git</a></li>
+						<li>Documentation officielle : <a href="https://git-scm.com/doc">https://git-scm.com/doc</a></li>
+						<li>Cheat : <a href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet">https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet</a></li>
+						<li>Cette formation : <a href="https://github.com/benito103e/revealjs-formation-git-iut">https://github.com/benito103e/reactjs-formation-git-iut</a></li>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			  twemoji.parse(document.body);
+		  
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				margin: 0.1,
+				width: 1680,
+				height: 1050,
+				hash: true,
+				slideNumber: true,
+				transition: 'convex',
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

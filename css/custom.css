@@ -1,0 +1,17 @@
+.reveal section img {
+    background: none;
+    border:none;
+    box-shadow: none;
+}
+
+.reveal section h2 img.emoji {
+    height:50px
+}
+
+.reveal section img.emoji {
+    height:30px;margin:0
+}
+
+.text-left {
+    text-align: left;
+}

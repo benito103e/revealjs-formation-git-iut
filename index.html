@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Formation GIT</title>
+    	<link rel="shortcut icon" href="images/favicon.ico" />
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<img src="images/git.png"/>
+					<p>
+						<small>par <a href="https://www.linkedin.com/in/benjamin-dieleman-a2330b95/">Benjamin DIELEMAN <br /></a></small>
+						<br />
+						<small>décembre 2019</small>
+						<br />
+						<a href="https://www.atgp.net">
+							<img src="images/logo-atgp.png" height="50px" >
+						</a>
+						&nbsp;&nbsp;
+						<a href="https://www.solluz.fr">
+							<img src="images/logo-solluz.png" height="50px" >
+						</a>
+						&nbsp;&nbsp;
+						<a href="https://github.com/benito103e/revealjs-formation-git-iut">
+							<img src="images/logo-github.png" height="50px" >
+						</a>
+					</p>
+				</section>
+				<!-- END Section -->
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			  twemoji.parse(document.body);
+		  
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				hash: true,
+				slideNumber: true,
+				transition: 'convex',
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

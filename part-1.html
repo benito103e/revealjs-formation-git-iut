@@ -262,33 +262,134 @@
 
 
 
+				<!---------------
+
+						PRATIQUE
+
+				--------------->
+
+
 				<section data-background="#28498c" data-background-transition="zoom">
-					<h2>II. En pratique</h2>
+					<h2>II. Un peu de pratique</h2>
 				</section>
 				<!-- END Section -->
 
 
-
 				<section>
 					<h2>1. Configurer son profil git</h2>
+
+					<h4>~/.gitconfig</h4>
+
+					<pre><code data-trim data-noescape class="hljs ini">
+					[user]
+					name = Benjamin Dieleman
+					email = benjamin.dieleman@caramail.net
+
+					[alias]
+					ci = commit
+					co = checkout
+					st = status
+					br = branch
+
+					[core]
+					excludesfile = /home/benjamin/.gitignore_global
+
+					[push]
+					default = simple
+
+					[branch]
+					autosetuprebase = always
+					</code></pre>
+
+					<blockquote>
+						<b>.gitconfig</b> / <b>.gitignore</b> peuvent être définis de manière globale <br />+ spécifiques au projet
+					</blockquote>
 				</section>
 				<!-- END Section -->
 
 
 				<section>
 					<h2>2. Initialiser un dépôt</h2>
+
+					<pre><code data-trim data-noescape class="hljs bash">
+						cd mon-projet
+
+						# Ce projet sera maintenant géré par GIT
+						git init
+						# Création d'un commit vide "First commit"
+						git ci --allow-empty
+
+						# ...Je commence à bosser
+					</code></pre>
+
+					<h4>Ou depuis un dépôt existant</h4>
+					<pre><code data-trim data-noescape class="hljs bash">
+						# Ajouter sa clé SSH à son profil Github/Gitlab si pas déjà fait
+						cat ~/.ssh/id_rsa.pub
+
+						cd directory-truc/
+
+						# On récupère le projet existant
+						git clone https://github.com/sjobs/apple-x.git mon-projet
+						# .. ou bien
+						git clone git@github.com:sjobs/apple-x.git mon-projet
+
+						cd mon-projet
+						# ...Je commence à bosser
+					</code></pre>
 				</section>
 				<!-- END Section -->
 
 
 				<section>
 					<h2>3. Premières modifications</h2>
+
+					<pre><code data-trim class="hljs bash">
+						# Créer une branche (co = checkout)
+						git co -b ma-branche
+
+						# Créer un nouveau fichier (ci = commit)
+						git add nouveau-fichier.txt
+						git ci
+
+						# Supprimer ce fichier et modifier le précédent commit
+						rm -f nouveau-fichier.txt
+						git add nouveau-fichier.txt
+						git ci --amend
+
+						# Annuler ma modification non commitée
+						git co -- mon-fichier.txt
+					</code></pre>
+
+					<br />
+					<h5>Pratique</h5>
+					<ol>
+						<li>Créer un index HTML dans un commit</li>
+						<li>Ajouter une image et la mettre dans le HTML => commit</li>
+						<li>Effectuer une correction dans le HTML => commit</li>
+						<li>Modifier le précédent commit</li>
+					</ol>
 				</section>
 				<!-- END Section -->
 
 
 				<section>
 					<h2>4. Partager son travail</h2>
+
+
+					<pre><code data-trim data-noescape class="hljs bash">
+						# Récupère l'état du dépôt distant
+						git fetch origin
+
+						git push origin -u ma-branche:bd-ma-branche-renamed
+					</code></pre>
+
+					<br />
+					<h5>Pratique</h5>
+					<ul>
+						<li>Envoyer sa jolie branche sur le dépôt distant</li>
+						<li>Mettre les initiales dans le nom de la branche</li>
+					</ul>
 				</section>
 				<!-- END Section -->
 

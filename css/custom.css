@@ -15,3 +15,7 @@
 .text-left {
     text-align: left;
 }
+
+.reveal section code.code-inline {
+    display: inline;
+}

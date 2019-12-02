@@ -138,31 +138,125 @@
 					<img src="images/distributed.png"/>
 
 					<h3>Fonctionnement avec un repo central (Gitlab)</h3>
-					<img src="images/distributed_central_repo.png"/>
+					<img src="images/distributed_central_repo.png" />
 				</section>
 				<!-- END Section -->
 
 
 				<section>
-					<h2>2. Les zones de travail en local</h2>
+					<h2>2. Les zones de travail <u>en local</u></h2>
+					<img src="images/git-workspaces.png" />
+
+					<br />
+					<ul>
+						<li>Working directory : Fichiers modifiés (dans éditeur)</li>
+						<li>Staging area : Index prêt à faire parti du prochain commit</li>
+						<li>Git repository : Base de données des commits</li>
+					</ul>
 				</section>
 				<!-- END Section -->
 
 
 				<section>
+					<h2>2. Les zones de travail <u>en local</u></h2>
+					<img src="images/git-workspaces-workflow.png" />
+				</section>
+				<!-- END Section -->
+
+
+				<section >
 					<h2>3. Statut</h2>
+
+					<code class="hljs bash">git status</code>
+					État actuel du 'staging' (bleu) et du 'working directory' (vert)
+					<img src="images/git-status.png" />
+
+					<br />
+					<pre><code data-trim data-noescape class="hljs bash">
+							# Commits dans le 'Git repository'
+							git log
+
+							# Interface + sympa
+							tig
+
+							# Personnalisable à souhait
+							git log --name-status --graph --oneline --decorate --all --pretty=format:"%C(yellow)%h\\ %Cblue%ad%Cred%d\\ %C(cyan)%<(50,trunc)%s%Cblue\\ [%cn]" --date=short
+						</code></pre>
 				</section>
 				<!-- END Section -->
 
 
 				<section>
 					<h2>4. Les commits</h2>
+					<img src="images/minions.jpg" />
 				</section>
 				<!-- END Section -->
 
 
 				<section>
-					<h2>5. Les branches (en bref)</h2>
+					<h2>4. Les commits</h2>
+
+					<h5> Un commit =</h5>
+					<ul>
+						<li>Meta-données : identifiant sha1, auteur, date</li>
+						<li>Référence vers le(s) commit(s) parent(s)</li>
+						<li>Snapshot des fichiers modifiés</li>
+					</ul>
+
+					<pre><code data-trim data-noescape class="hljs plain">
+					commit bdae142eea5d9cb85ba89dd913c48c28556cfe15
+					Author: Benjamin Dieleman <benjamin.dieleman@caramail.net>
+					Date:   Wed May 24 15:27:18 2019 +0200
+
+					Improve security by using Gitlab personal access token
+
+					Personal Access Tokens are a better choice than
+					"Resource Owner Password Credentials" API authentication
+					</code></pre>
+
+					<img src="images/git-commits.png"/>
+					<br /><br />
+
+					<h5>Un commit est local (≠ SVN)</h5>
+				</section>
+				<!-- END Section -->
+
+
+				<section>
+					<h2>5. Les branches (en très bref)</h2>
+					<img src="images/baobab.jpg" />
+				</section>
+				<!-- END Section -->
+
+
+				<section>
+					<h2>5. Les branches (en très bref)</h2>
+
+
+					<h4>Branche = étiquette pointant un commit</h4>
+					<img src="images/git-branches.png"/>
+					<br /><br />
+
+					<ul>
+						<li>Une feature / Un fix / Un POC &#8594; Une branche</li>
+						<li>Rapide et pratique</li>
+						<li>Facilite le partage</li>
+						<li>Usez et abusez des branches</li>
+					</ul>
+
+				</section>
+				<!-- END Section -->
+
+
+				<section>
+					<h4>Particularités</h4>
+					<ul>
+						<li><code>`master`</code> : Branche principale (convention)</li>
+						<li><code>`HEAD`</code> : Branche locale sur laquelle on se trouve</li>
+					</ul>
+					<br /><br />
+
+					<img src="images/branch-head.png"/>
 				</section>
 				<!-- END Section -->
 

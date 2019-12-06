@@ -51,15 +51,456 @@
 				<!-- END Section -->
 
 
-				<section data-background="#28498c" data-background-transition="zoom">
-					<h2>Sources</h2>
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2>Objectifs de la séance</h2>
 					<ul>
-						<li>Fortement inspiré par le blog : <a href="https://www.miximum.fr/">https://www.miximum.fr/</a></li>
-						<li>Tutoriel (en) de bonne qualité : <a href="https://www.atlassian.com/git">https://www.atlassian.com/git</a></li>
-						<li>Documentation officielle : <a href="https://git-scm.com/doc">https://git-scm.com/doc</a></li>
-						<li>Cheat : <a href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet">https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet</a></li>
-						<li>Cette formation : <a href="https://github.com/benito103e/revealjs-formation-git-iut">https://github.com/benito103e/reactjs-formation-git-iut</a></li>
+						<li>Scénario pratique sur 2 dépôts sur Gitlab</li>
+						<li>Un peu de théorie au milieu</li>
+						<li>Un zeste de bonnes pratiques</li>
 					</ul>
+					<br /><br />
+					<h4>→ Évaluation semaine suivante</h4>
+				</section>
+				<!-- END Section -->
+
+
+				<section data-background="#28498c" data-background-transition="zoom">
+					<h2>I. Connexion Gitlab</h2>
+					<h4>Clé SSH</h4>
+					<pre><code data-trim data-noescape class="hljs bash">
+						# Créer une clé SSH
+						ssh-keygen -t rsa -b 2048
+
+						cat ~/.ssh/id_rsa.pub
+
+						# Ajouter au compte Gitlab, puis tester authentification
+						ssh git@gitlab.iut-valence.fr
+						</code></pre>
+				</section>
+				<!-- END Section -->
+
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2>Git remote</h2>
+					<ul>
+						<li>Lors d'un <code>git clone</code> ou <code>git remote add</code></li>
+						<li>Lie notre repo local à un repo distant</li>
+						<li><u>origin</u> : Nom par défaut de ce repo distant</li>
+						<li>Lien HTTPS / SSH (via protocole GIT)</li>
+					</ul>
+				</section>
+				<!-- END Section -->
+
+
+				<section>
+					<h2>II. Initialiser mon projet</h2>
+
+					<ul>
+						<li>Créer projet privé sur Gitab <u>git-formation-monidentifiant</u></li>
+						<li>Créer dossier projet</li>
+					</ul>
+					<pre><code data-trim data-noescape class="hljs bash">
+						cd
+						mkdir git-formation-monidentifiant
+
+						cd git-formation-monidentifiant
+						git init
+						git remote add origin git@gitlab.iut-valence.fr:monidentifiant/git-formation-monidentifiant.git
+						git ci --allow-empty -m "Initial commit"
+
+
+						git push -u origin master
+						</code></pre>
+
+					<br />
+					<h4>=> Puis protéger la branche master sur Gitlab</h4>
+				</section>
+				<!-- END Section -->
+
+
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2>Bonnes pratiques commit</h2>
+					<h4>Commit atomique &#9762;</h4>
+					<ul>
+						<li>Il concerne une seule chose</li>
+						<li>Il est le plus petit possible (tout en restant cohérent)</li>
+					</ul>
+					<br />
+					<br />
+					<strong>Ne doit donc pas</strong>
+					<br />
+					<ul>
+						<li>Mélanger une amélioration et une correction</li>
+						<li>Mélanger plusieurs fonctionnalités / améliorations</li>
+						<li>Mélanger plusieurs corrections différentes</li>
+					</ul>
+				</section>
+				<!-- END Section -->
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2>Bonnes pratiques commit</h2>
+					<ul>
+						<li>En anglais (Sauf indication contraire)</li>
+						<li>Titre de commit clair et succinct
+							<ul>
+								<li>Ce que fait le commit</li>
+								<li>Commence par un verbe à l'impératif</li>
+							</ul>
+						</li>
+						<li>Description détaillée si nécessaire
+							<ul>
+								<li>Séparé par une ligne vide</li>
+								<li>Références au tracker, issues...</li>
+								<li>Descriptions / Choix techniques</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<!-- END Section -->
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2>Bonnes pratiques commit</h2>
+					<h4>Exemples de bons messages de commit</h4>
+					<pre><code data-trim data-noescape class="hljs">
+						Create runner for update job
+
+						­ UpdateJobRunner handle execution of an update job
+						1° Can run a background process to execute the job separately
+						2° Is called by the process to execute the update job
+						­ Create UpdateJobRunnerFactory service
+
+						Tracker #1505
+						</code></pre>
+					<pre><code data-trim data-noescape class="hljs">
+						Define directory to store update job reports
+						</code></pre>
+					<pre><code data-trim data-noescape class="hljs">
+						Enable Sqlite database
+
+						Configure Doctrine with pdo_sqlite driver
+						</code></pre>
+				</section>
+				<!-- END Section -->
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2>Bonnes pratiques commit</h2>
+					<h4>Exemple de mauvais commit</h4>
+					<pre><code data-trim data-noescape class="hljs">
+						(BD) Install kilik/table
+						</code></pre>
+					<pre><code data-trim data-noescape class="hljs">
+						Improve the project
+						</code></pre>
+					<pre><code data-trim data-noescape class="hljs">
+						Fix some bugs
+						</code></pre>
+					<pre><code data-trim data-noescape class="hljs">
+						Fix that + Improve this + Add something + Buy coffee
+						</code></pre>
+					<pre><code data-trim data-noescape class="hljs">
+						C'est un trou de verdure où chante une rivière, Accrochant follement aux herbes des haillons
+						</code></pre>
+				</section>
+				<!-- END Section -->
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2>Enregistrer des modifications</h2>
+					<ol>
+						<li>Développer</li>
+						<li>Une modification cohérente ?</li>
+						<li><code>git add {file|directory}</code></li>
+						<li><code>git status</code> : Vérifie l'état du <b>staging</b></li>
+						<li><code>git commit</code></li>
+						<li>Écrire un message de commit et valider</li>
+					</ol>
+				</section>
+				<!-- END Section -->
+
+
+				<section>
+					<h2>III. Des commits pour mon dépôt</h2>
+					<pre><code data-trim data-noescape class="hljs bash">
+						touch index.html
+						git add index.html
+						git status
+						git commit
+					</code></pre>
+
+					<pre><code data-trim data-noescape class="hljs bash">
+						nano index.html # &lt;html&gt;&lt;body&gt;&lt;h1&gt;yep&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;
+						git add .
+						git st
+						git ci
+					</code></pre>
+
+					<pre><code data-trim data-noescape class="hljs bash">
+						touch page.html
+						nano index.html # &lt;a href=&quot;page.html&quot;&gt;Page&lt;/a&gt;
+						git add .
+						git st
+						git ci
+					</code></pre>
+
+
+					<pre><code data-trim data-noescape class="hljs bash">
+						git push
+					</code></pre>
+				</section>
+				<!-- END Section -->
+
+
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2><code>git push</code></h2>
+
+					<ul>
+						<li><code>git push {remote} {branche}</code> : Envoi de la branche</li>
+						<li><code>git push origin -u new-feature:new-feature</code> : Envoi et lie de la branche</li>
+						<li><code>git push origin :new-feature</code> : Supprime branche distante</li>
+					</ul>
+
+					<br /><br />
+
+					<h4>Le plus souvent, sur master `git push`</h4>
+
+					<br /><br />
+
+					<code>git push --force</code> :  Jamais pour une branche partagée
+					<br />
+					=> Mais pour mes branches 😇
+				</section>
+				<!-- END Section -->
+
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2><code>git checkout</code></h2>
+
+					<pre><code data-trim data-noescape class="hljs bash">
+						git checkout {branch/commit}
+						# Déplace le `HEAD` et garde les modifs en cours
+						# Change de branche ou reviens à un état antérieur...
+					</code></pre>
+
+					<br />
+					<img src="images/monkey-jump-branches.jpg" width="50%"/>
+					<br />
+
+					<cite>
+						⚠️ Les modifications en cours non commitées changent de branche avec moi
+					</cite>
+				</section>
+				<!-- END Section -->
+
+
+
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2>Créer une branche</h2>
+
+					<pre><code data-trim data-noescape class="hljs bash">
+					git checkout master # Je positionne HEAD sur le master
+					git branch test # nouvelle branche depuis HEAD
+					git checkout test # positionne sur la branche
+					git commit # commit sur la nouvelle branch
+					</code></pre>
+
+					<img src="images/git-branch-add-0.png" />
+					<img src="images/git-branch-add-1.png" />
+					<img src="images/git-branch-add-2.png" />
+					<img src="images/git-branch-add-3.png" />
+
+
+					<br /><br />
+					<h4>Ou raccourci :</h4>
+					<pre><code data-trim data-noescape class="hljs bash">
+					git checkout master -b test
+					</code></pre>
+					<br />
+				</section>
+				<!-- END Section -->
+
+
+
+				<section>
+					<h2>III. Des branches pour mon dépôt</h2>
+
+					<h4>Branche mergé via Gitlab</h4>
+					<pre><code data-trim data-noescape class="hljs bash">
+						git co master -b branche-1
+						touch file-1.html  # + commit
+						git push origin -u branche-1
+					</code></pre>
+					<h5>=> merge via Gitlab</h5>
+
+
+					<h4>Branche mergé en CLI</h4>
+					<pre><code data-trim data-noescape class="hljs bash">
+						git co master
+						git pull # Log ?
+						git co -b branche-2
+						touch file-2.html  # + commit
+						git co master
+						git merge branche-2
+						git push # On pousse le master avec la branche mergée
+					</code></pre>
+				</section>
+
+
+
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2>ff vs no-ff</h2>
+
+					<img src="images/git-merge-ff-vs-noff.png" height="836" width="1008"/>
+				</section>
+				<!-- END Section -->
+
+
+				<section>
+					<h2>III. Des branches pour mon dépôt</h2>
+
+					<h4>Branche mergé no-ff en CLI</h4>
+					<pre><code data-trim data-noescape class="hljs bash">
+						git co master
+						git co -b branche-3
+						touch file-3.html  # + commit
+						git co master
+						git merge --no-ff branche-3
+						git push
+					</code></pre>
+				</section>
+
+
+				<section>
+					<h2>IV. Dépôt partagé</h2>
+
+					<h4>Inviter collègue de droite en "Développeur"</h4>
+					<pre><code data-trim data-noescape class="hljs bash">
+						cd ..
+						git clone git@gitlab.iut-valence.fr:colleguedegauche/git-formation-colleguedegauche.git
+						cd git-formation-colleguedegauche
+					</code></pre>
+
+					<h4>Travailler sur ce projet</h4>
+					<pre><code data-trim data-noescape class="hljs bash">
+						git co master -b branche-monidentifiant
+						touch fonction-monidentifiant.html   # + commit
+						git push origin -u branche-monidentifiant
+					</code></pre>
+				</section>
+
+
+				<section>
+					<h2>IV. Dépôt partagé</h2>
+
+					<h4>J'ai un bug sur mon dépôt</h4>
+					<pre><code data-trim data-noescape class="hljs bash">
+						cd ../git-formation-monidentifiant
+						git co master
+						# Corriger le index.html + commit + push
+					</code></pre>
+
+					<br />
+					<h4>Récupérer l'avancée du master</h4>
+					<pre><code data-trim data-noescape class="hljs bash">
+						cd ../git-formation-colleguedegauche
+
+						# Récupère son travail sur le master
+						git co master
+						git fetch  # git log pour voir
+						git pull
+					</code></pre>
+				</section>
+
+
+				<section>
+					<h2>IV. Dépôt partagé</h2>
+
+					<h4>Prendre en compte la correction dans ma branche</h4>
+					<pre><code data-trim data-noescape class="hljs bash">
+						git co branche-monidentifiant
+						git rebase master
+						git push --force branche-monidentifiant
+						# ⚠ pas de push --force sur des branches partagées
+					</code></pre>
+
+					<br />
+
+					<h4>Avant rebase</h4>
+
+					<pre><code data-trim data-noescape class="hljs bash">
+					A---B---C---D ← master
+					     \
+					      E---F---G ← new-feature
+					</code></pre>
+
+					<h4>Après rebase</h4>
+
+
+					<pre><code data-trim data-noescape class="hljs bash">
+					A---B---C---D ← master
+					             \
+					              E'---F'---G' ← new-feature
+					</code></pre>
+				</section>
+
+
+
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2><code>git fetch</code></h2>
+
+
+					<h4>Importe les informations du repo distant</h4>
+					<code>git fetch</code>
+					<p>=> Ajoute / Met à jour les références <b>origin/*</b></p>
+
+					<br />
+
+					<h4>Importe + supprime les références n'existant plus</h4>
+					<code>git fetch --prune</code>
+
+					<br /><br />
+
+					<h4>Affiche les branches locales + distantes</h4>
+					<code>git branch --all</code>
+
+				</section>
+
+
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2><code>git pull</code></h2>
+
+
+					<h4>Import + merge les informations distantes</h4>
+
+					<code>git pull {remote}</code><br/>
+					<code>git pull {remote} {branche}</code>
+
+					<br /><br />
+					<p><cite>
+						Les pull sont en mode rebase. <br />
+						cf config globale dans .gitconfig
+					</cite>
+					</p>
+				</section>
+				<!-- END Section -->
+
+				<section class="text-left">
+					<p>
+					l1 = log --graph --oneline --decorate --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%<(50,trunc)%s%Cblue\\ [%cn]" --date=short
+					</p>
+
+					<p>
+					l2 = log --stat --oneline --decorate --graph --all
+					</p>
+
+					<p>
+					l5 = log --name-status --graph --oneline --decorate --all --pretty=format:"%C(yellow)%h\\ %Cblue%ad%Cred%d\\ %C(cyan)%<(50,trunc)%s%Cblue\\ [%cn]" --date=short
+					</p>
 				</section>
 			</div>
 		</div>

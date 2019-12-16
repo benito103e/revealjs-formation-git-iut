@@ -1,0 +1,303 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Formation GIT - 2°</title>
+    	<link rel="shortcut icon" href="images/favicon.ico" />
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<img src="images/git.png"/>
+					<p>
+						<small>par <a href="https://www.linkedin.com/in/benjamin-dieleman-a2330b95/">Benjamin DIELEMAN <br /></a></small>
+						<br />
+						<small>décembre 2019</small>
+						<br />
+						<a href="https://www.atgp.net">
+							<img src="images/logo-atgp.png" height="50px" >
+						</a>
+						&nbsp;&nbsp;
+						<a href="https://www.solluz.fr">
+							<img src="images/logo-solluz.png" height="50px" >
+						</a>
+						&nbsp;&nbsp;
+						<a href="https://github.com/benito103e/revealjs-formation-git-iut">
+							<img src="images/logo-github.png" height="50px" >
+						</a>
+					</p>
+				</section>
+				<!-- END Section -->
+
+
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2>Modifier ses commits</h2>
+				</section>
+				<!-- END Section -->
+
+
+				<section data-background="#28498c" data-background-transition="zoom">
+					<h2><code>git commit &#45;&#45;amend</code></h2>
+					<ul>
+						<li>Modifier le <b>dernier</b> commit</li>
+						<li>- Son contenu</li>
+						<li>- Ses metas (auteur, date, titre)</li>
+					</ul>
+				</section>
+				<!-- END Section -->
+
+
+				<section>
+					<h2><code>git commit &#45;&#45;amend</code></h2>
+					<pre><code data-trim data-noescape class="hljs bash">
+						nano index.html
+						git add index.html
+						git st
+						git ci
+						</code></pre>
+
+					<br />
+					<h4>=> Oups</h4>
+
+
+					<pre><code data-trim data-noescape class="hljs bash">
+						touch {autre-fichier.html}
+						nano index.html
+						git add .
+						git ci --amend
+						</code></pre>
+				</section>
+				<!-- END Section -->
+
+
+
+
+				<section data-background="#28498c" data-background-transition="zoom">
+					<h2><code>git reset</code> vs <code>git revert</code></h2>
+
+					<img src="images/git-reset-revert.png" width="50%"/>
+				</section>
+				<!-- END Section -->
+
+
+				<section data-background="#28498c" data-background-transition="zoom">
+					<h2><code>git reset</code></h2>
+					<ul>
+						<li>Déplace la référence de la branche</li>
+						<li>⚠ à utiliser avec vigilance</li>
+					</ul>
+
+					<br /><br />
+
+					<h4>=> Résultat : supprime les commits</h4>
+				</section>
+				<!-- END Section -->
+
+
+				<section>
+					<h2><code>git reset</code></h2>
+					<pre><code data-trim data-noescape class="hljs bash">
+						nano index.html # + commit
+						nano fichier-2.html # + commit
+						nano fichier-3.html # + commit
+						</code></pre>
+					<br />
+					<h4>=> Ça ne me plait pas</h4>
+
+
+					<pre><code data-trim data-noescape class="hljs bash">
+						# Supprime les 3 derniers commits mais on garde le contenu
+						git reset HEAD~3
+						# => Refaire les commits comme on veut
+
+						# ...on ne garde rien
+						git reset --hard HEAD~3
+						git reset --hard origin/master
+						</code></pre>
+				</section>
+				<!-- END Section -->
+
+				<section data-background="#28498c" data-background-transition="zoom">
+					<h2><code>git revert</code></h2>
+					<ul>
+						<li>Bug en production</li>
+						<li>=> Génère le commit inverse de celui ciblé</li>
+					</ul>
+
+					<br /><br />
+
+					<pre><code data-trim data-noescape class="hljs bash">
+						# Annule le commit bfa6ec4
+						git revert bfa6ec4
+
+						# Annule l'avant dernier commit
+						git revert HEAD~1
+						</code></pre>
+				</section>
+				<!-- END Section -->
+
+
+
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2><code>git rebase</code></h2>
+					<img src="images/rebase.jpg" width="50%"/>
+				</section>
+				<!-- END Section -->
+
+
+
+				<section data-background="#28498c" data-background-transition="zoom">
+					<h2><code>git rebase</code></h2>
+					L'outil merveilleux !<br />
+					=> Mais aussi un des plus complexes<br />
+					Rebase = Ciseau<br />
+					=> ⚠ à manipuler avec précautions<br />
+
+					<img src="images/child-scissors.jpg" width="25%"/>
+				</section>
+				<!-- END Section -->
+
+
+
+				<section>
+					<h2><code>git rebase</code></h2>
+
+					<h4>Récupérer les dernières modifications du master</h4>
+					<pre><code data-trim data-noescape class="hljs bash">
+						git checkout master
+						git pull
+
+						git checkout ma-branche
+						git rebase master
+						</code></pre>
+
+					<br />
+
+					<h4>Ré-écrire l'historique de ma branche</h4>
+					<pre><code data-trim data-noescape class="hljs bash">
+						git checkout ma-branche
+
+						git rebase -i master
+
+						# Ouvre un éditeur pour
+						# - Ordonner les commits
+						# - Regrouper / Fusionner
+						# - Modifier
+						# - Ignorer
+						</code></pre>
+				</section>
+				<!-- END Section -->
+
+
+				<section>
+					<h2><code>git rebase</code> ✄</h2>
+					<h4> Déplacer une branche</h4>
+					<img src="images/git-rebase-before.png" /><br />
+
+
+					<pre><code data-trim data-noescape class="hljs bash">
+						git checkout fix-bug
+						git rebase D --onto master
+						</code></pre>
+
+					<img src="images/git-rebase-after.png" />
+				</section>
+				<!-- END Section -->
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2>Et la gestion des conflits</h2>
+					pull, merge, stash, cherry­pick, rebase... : source de conflits<br />
+					=> Suivre les conseils de la console<br />
+					=> Précision + Patience !<br />
+
+					<pre><code data-trim data-noescape class="hljs bash">
+						error: impossible d'appliquer a51640d...
+						Lorsque vous aurez résolu ce problème,
+						lancez "git rebase ­­continue".
+						Si vous préférez sauter ce patch,
+						lancez "git rebase ­­skip" à la place.
+						Pour extraire la branche d'origine et stopper le rebasage,
+						lancez "git rebase ­­abort".
+						</code></pre>
+				</section>
+				<!-- END Section -->
+
+				<section data-background="#080d2a" data-background-transition="zoom">
+					<h2>Autres commandes utiles</h2>
+
+					<ul>
+						<li><code>git stash</code> : mettre de côté des modifications</li>
+						<li><code>git cherry­pick</code> : picorer un commit</li>
+						<li><code>git reflog</code> : Arghhhh j'ai cassé mon historique</li>
+						<li><code>git bisect</code> : Débug intelligent</li>
+						<li><code>git tag</code> : Les étiquettes (release, mep...)</li>
+					</ul>
+
+					<blockquote>Énormément de commandes / options</blockquote>
+				</section>
+				<!-- END Section -->
+
+
+				<section data-background="#28498c" data-background-transition="zoom">
+					<h2>Sources</h2>
+					<ul>
+						<li>Fortement inspiré par le blog : <a href="https://www.miximum.fr/">https://www.miximum.fr/</a></li>
+						<li>Tutoriel (en) de bonne qualité : <a href="https://www.atlassian.com/git">https://www.atlassian.com/git</a></li>
+						<li>Documentation officielle : <a href="https://git-scm.com/doc">https://git-scm.com/doc</a></li>
+						<li>Cheat : <a href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet">https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet</a></li>
+						<li>Cette formation : <a href="https://github.com/benito103e/revealjs-formation-git-iut">https://github.com/benito103e/reactjs-formation-git-iut</a></li>
+					</ul>
+				</section>
+				<!-- END Section -->
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			  twemoji.parse(document.body);
+		  
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				margin: 0.1,
+				width: 1680,
+				height: 1050,
+				hash: true,
+				slideNumber: true,
+				transition: 'convex',
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
